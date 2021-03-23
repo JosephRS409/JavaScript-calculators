@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mileage Calculator</title>
+    <script>
+        /* Defining Table
+         * Input: Enter beginning and ending odometer readings and gallons used
+         * Processing: Calculates miles per gallon
+         * Output: Recieve MPG
+         */
+        function computeMilage() {
+            // Line Comment
+
+            var begin = parseFloat(document.getElementById("begin").value);
+            //quotation marks or apostrophe work
+            var end = parseFloat(document.getElementById("end").value);
+            var gallons = parseFloat(document.getElementById("gallons").value);
+            var miles = end - begin;
+            var mpg = miles / gallons;
+            // Not one big thing. Use a bunch of steps.
+            document.getElementById('mpg').innerHTML = mpg + ' miles per gallon';
+
+            // document is the webpage
+            // getElementById searches page for the HTML elements that has THIS id
+            // in this case, it's a <div>
+            // innerHTML modifies contents of div id
+            // then innerHTML sets that equal to the variable, in this case
+        } //This is a new block. { }
+    </script>
+    <link rel="stylesheet" type="text/css" href="mystyle.css">
+</head>
+
+<body>
+    <h1>Mileage Calculator</h1>
+    Beginning odometer reading: <input type="text" id="begin"><br>
+    <!-- Step-wise Refinement: Write a bit, then check, repeat.-->
+    Ending odometer reading: <input type="text" id="end"><br>
+    Gallons: <input type="text" id="gallons"><br> <!-- <br> is a breakline -->
+    <button type="button" onclick="computeMilage()">Compute Mileage</button><br>
+    <div id="mpg">
+        <!-- A place to put output -->
+    </div>
+
+</body>
+
+</html>
