@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investment Calculator</title>
+    <link rel="stylesheet" type="text/css" href="mystyle.css">
+    <script>
+        /* Defining Table
+        * Input: 
+        * Processing: 
+        * Output: 
+        */
+        function futureValue() {
+            // get the input
+            let amount = parseFloat(document.getElementById("amount").value); // value puts the value the user entered in.
+            let annualRate = parseFloat(document.getElementById("rate").value);
+            let years = parseFloat(document.getElementById("years").value);
+            // calculate the future value
+            let monthlyRate = annualRate /1200;
+            let futureValue = amount * Math.pow(1 + monthlyRate, years * 12);
+
+            let output = "The future value is $" + Math.round(futureValue * 100) / 100;
+            // display the results
+            document.getElementById("value").innerHTML = output;
+            // Remember step-wise refinement!
+            // NaN = Not a Number
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Investment Calculator</h1>
+    Investment amount: <input type="text" id="amount"><br>
+    Annual interest rate: <input type="text" id="rate"><br>
+    Number of years <input type="text" id="years"><br>
+    <button onclick="futureValue()" type="button">Compute Value
+    </button>
+    <div id="value">
+    </div>
+    
+</body>
+
+</html>

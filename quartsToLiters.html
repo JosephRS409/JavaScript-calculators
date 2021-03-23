@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quart to Liter Converter</title>
+    <script>
+        /* Defining Table
+         * Input: Put in the quarts (not the quartz)
+         * Processing: Transform quarts to liters (alchemy)
+         * Output: Receive the liters
+         */
+         function computeLiters() {
+            // Line Comment
+
+            // var begin = parseFloat(document.getElementById("begin").value); 
+            
+            //quotation marks or apostrophe work
+            var quarts = parseFloat(document.getElementById("quarts").value);
+
+            // var gallons = parseFloat(document.getElementById("gallons").value);
+            // var miles = quarts - begin;
+
+            var convert = Math.round((quarts / 1.0566882049662) * 100) / 100;
+            // Not one big thing. Use a bunch of steps.
+            document.getElementById('convert').innerHTML = "Congratulations! You have " + convert + ' liters.';
+
+            </script>
+    <link rel="stylesheet" type="text/css" href="mystyle.css">
+</head>
+<body>
+    <h1>Quart to Liter Converter</h1>
+
+    <!-- Beginning odometer reading: <input type="text" id="begin"><br> -->
+
+    <!-- Step-wise Refinement: Write a bit, then check, repeat.-->
+    Input the liquid quarts amount: <input type="text" id="quarts"><br>
+
+    <!-- Gallons: <input type="text" id="gallons"><br> <br> is a breakline -->
+    
+    <button type="button" onclick="computeLiters()">Convert</button><br>
+    <div id = "convert"><!-- A place to put output --> </div> 
+
+</body>
+</html>
