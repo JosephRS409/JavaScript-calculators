@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sum the Odd Ones</title>
+    <!-- <link rel="stylesheet" type="text/css" href="mystyle.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="w3.css"> -->
+    <style>
+        body {
+            color: navy;
+            font-size: 16pt;
+            background: rgb(160, 163, 180)
+            /* font-family:Verdana,sans-serif; */
+        }
+
+        h1 {
+            color: navy;
+            text-align: center
+            /* font-family:"Segoe UI",Arial,sans-serif; */
+        }
+    </style>
+    <script>
+        /* Defining Table
+         * Input: Give program an input number
+         * Processing: The program sums the odd integers between input and 1 
+         * Output: The sum of all the odd integers between 1 and the input number
+         */
+        function createTable() {
+            // get the input
+            let n = parseInt(document.getElementById("n").value); // value puts the value the user entered in.
+            let oddOne = 0;
+            let summed = 0;
+            // create the table
+            for (let i = 1; i <= n; i++) {
+                if (i % 2 != 0) {
+                    summed += i;
+                }
+            }
+            output = "The sum of the odd integers including 1 and the entered number is: " + summed;
+            // display the results
+            document.getElementById("magic").innerHTML = output;
+            // Remember step-wise refinement!
+        }
+    </script>
+</head>
+
+<body>
+    <h1>The Odd-Integer Adding Machine</h1>
+    <p>Please enter your preferred number: </p><input type="text" id="n"><br>
+    <!--Goes to the beginning.-->
+    <button onclick="createTable()" type="button">Sum the Odd Ones</button>
+    <div id="magic">
+        <!--Takes the end result.-->
+    </div>
+</body>
+
+</html>

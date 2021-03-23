@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wind Chill Calculator</title>
+    <!-- <link rel="stylesheet" type="text/css" href="mystyle.css"> -->
+    <script>
+        // @ts-nocheck
+
+        /* Defining Table
+         * Input: give doInputOutput a temperature and air speed
+         * Processing: windChill calculates the wind chill with inputs
+         * Output: doInputOutput gives the wind chill
+         */
+        
+        function doInputOutput() {
+            // Line Comment
+            let tempInput = parseFloat(document.getElementById("doInputBoxTemp").value);
+            let speedInput = parseFloat(document.getElementById("doInputBoxSpeed").value);
+            let windChillOutput = windChill(tempInput, speedInput); // windChillResult returns to be stored in windChillOutput
+            document.getElementById("outputDiv").innerHTML = windChillOutput;
+        }
+        function windChill(tempF, speed) {
+            // Line Comment
+            // let windChillResult = 0;
+            let airTemp = tempF;
+            let windSpeed = speed;
+            
+            let windChillResult = 35.74 + 0.6215 * airTemp - 35.75 * windSpeed ** 0.16 + 0.4275 * airTemp * Math.pow(windSpeed, 0.16);
+            
+            return windChillResult.toFixed(2);
+        }
+    </script>
+</head>
+<body>
+    <h1>Wind Chill Calculator</h1>
+    <h3>Temperature: <input type = "text" id = "doInputBoxTemp"></h3>
+    <h3>Wind Speed: <input type = "text" id = "doInputBoxSpeed"></h3>
+    <button onclick = "doInputOutput()" type = "button">Wind Chill</button>
+    <div id = "outputDiv"></div>
+    <!-- <script src="externalScript.js"></script> -->
+</body>
+</html>

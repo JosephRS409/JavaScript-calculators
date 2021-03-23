@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Triangle Checker</title>
+    <link rel="stylesheet" type="text/css" href="mystyle.css">
+    <script>
+        /* Defining Table
+        * Input: Input 3 sides of a triangle
+        * Processing: Calculates the 3 side inputs
+        * Output: Returns perimeter or invalid triangle
+        */
+        function triangle() {
+            // get the input
+            let s1 = parseFloat(document.getElementById("side1").value); // value puts the value the user entered in.
+            let s2 = parseFloat(document.getElementById("side2").value);
+            let s3 = parseFloat(document.getElementById("side3").value);
+            let output = "";
+            if (s1 + s2 > s3 && s2 + s3 > s1 && s3 + s1 > s2) {
+                output = "The perimeter is " + (s1 + s2 + s3);
+            }
+            else {
+                output = "That is not a valid triangle."
+            }
+            // calculate the area
+                    
+            // display the results
+            document.getElementById("output").innerHTML = output;
+            // Remember step-wise refinement!
+            // NaN = Not a Number
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Triangle Perimeter</h1>
+    Please enter the side1: <input type="text" id="side1"><br>
+    Please enter the side2: <input type="text" id="side2"><br>
+    Please enter the side3: <input type="text" id="side3"><br>
+    <button onclick="triangle()" type="button">Create Triangle
+    </button>
+    <div id="output">
+    </div>
+</body>
+
+</html>

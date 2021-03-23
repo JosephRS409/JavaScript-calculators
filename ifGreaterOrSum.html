@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <title>Logic Tool 19</title>
+    <script>
+        /* Input: reads two numbers input in two text fields
+         * Processing: program calculates if both numbers are greater than five and sum is greater than 20
+         * Output: if both conditions are met then "True" is output to div, else it outputs "False" to div
+         */
+
+        function myFunction() {
+            // Line Comment
+            let numberOne = parseFloat(document.getElementById("one").value);
+            let numberTwo = parseFloat(document.getElementById("two").value);
+            let output;
+                if ((numberOne > 5 && numberTwo > 5) || ((numberOne + numberTwo) > 20)) {
+                    output = "True";
+                }
+                else { 
+                    output = "False";
+                }
+            document.getElementById("output").innerHTML = output;
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Please enter two numbers:</h1>
+
+    <input type="text" id="one" size="5">
+    <input type="text" id="two" size="5">
+    <button type="button" onclick="myFunction()">Click</button>
+    <div id="output"></div>
+</body>
+
+</html>

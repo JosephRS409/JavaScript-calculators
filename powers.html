@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Power Chart!</title>
+    <!-- <link rel="stylesheet" type="text/css" href="mystyle.css"> -->
+    <script>
+        // @ts-nocheck
+
+        /* Defining Table
+         * Input: push button
+         * Processing: the program calculates the powers of 2 from 0—31
+         * Output: receive bacon, for it is the powers
+         */
+        function powerFunction() {
+            // Line Comment   
+            let output = "";
+            for (let i = 0; i <= 31; i++) {
+                output += "2 ^ " + i + " = " + (2 ** i) + "<br>";
+                // document.writeln(output); // I can use this if I change "output +=" to "output ="
+            }
+            document.getElementById("outputDiv").innerHTML = output;
+        }
+    </script>
+</head>
+
+<body>
+    <h1>The Power Chart!</h1>
+    <button onclick="powerFunction()" type="button">Push for power!</button>
+    <div id="outputDiv"></div>
+</body>
+
+</html> 

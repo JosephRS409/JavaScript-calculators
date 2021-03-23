@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store Discount Cipher</title>
+    <link rel="stylesheet" type="text/css" href="mystyle.css">
+    <script>
+        /* Defining Table
+         * Input: Takes customer's subtotal as input
+         * Processing: Calculates discount (10%) if day is Tuesday or Wednesday and order is $50 or greater
+         * Output: Returns total, including tax
+         */
+        // let total = 0
+        function possibleDiscount() {
+            // Line Comment
+            var dayOfWeek = new Date().getDay();
+            let subtotal = parseFloat(document.getElementById("input").value);
+            if ((subtotal >= 50) && (dayOfWeek == 2 || dayOfWeek == 3)) {
+                total = ((subtotal * .9) * 1.06);
+                }
+            else {
+                total = (subtotal * 1.06);
+            }
+            rounded = total.toFixed(2);
+
+            document.getElementById("outputDiv").innerHTML = rounded;
+        }
+    </script>
+</head>
+<body>
+    Enter Subtotal <input type = "text" id = "input">
+    <button onclick = "possibleDiscount()" type = "button">
+        Calculate
+    </button>
+    <div id = "outputDiv">
+    </div>
+</body>
+</html>

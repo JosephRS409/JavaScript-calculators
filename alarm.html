@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alarm Clock</title>
+    <link rel="stylesheet" type="text/css" href="mystyle.css">
+    <script>
+        /* Defining Table
+         * Input: Automatic from computer's clock
+         * Processing: Calculates when acceptable to sleep in
+         * Output: Returns "Get up!" or "Sleep in."
+         */
+        function canISleep() {
+            // Line Comment
+            var now = new Date();
+            var month = now.getMonth();
+            var dayOfMonth = now.getDate();
+            var dayOfWeek = now.getDay();
+            
+            let message; 
+                if (month == 0 && dayOfMonth == 1) {
+                    message = "You may sleep in.";
+                }
+                else if (month == 6 && dayOfMonth == 4) {
+                    message = "You may sleep in.";
+                }
+                else if (month == 11 && dayOfMonth == 25) {
+                    message = "You may sleep in.";
+                }
+                else {
+                    message = "No! Get up!";
+                }
+            // Jan 1 || July 4 || Dec 25; {
+            // Use "switch" perhaps?
+            document.getElementById("now").innerHTML = now;
+            document.getElementById("month").innerHTML = month;
+            document.getElementById("dayOfMonth").innerHTML = dayOfMonth;
+            document.getElementById("dayOfWeek").innerHTML = dayOfWeek;
+            document.getElementById("sleep").innerHTML = message;
+        }
+    </script>
+</head>
+<body>
+    Computer Entry<br>
+    <button onclick = "canISleep()" type = "button">
+        Can I sleep in? 
+    </button>
+    Time right now: <br>  <div id = "now"></div>
+    Month index number: <div id = "month"></div>
+    Day of Week index number: <div id = "dayOfWeek"></div>
+    Day of Month number: <div id = "dayOfMonth"></div>
+    <br>
+    So, can I sleep in? <div id = "sleep"></div>
+</body>
+</html>

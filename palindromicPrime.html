@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palindromic Prime</title>
+    <link rel="stylesheet" type="text/css" href="mystyle.css">
+    <script>
+        // @ts-nocheck
+
+        /* Defining Table
+         * Input: Push button
+         * Processing: Calculates and lists palindromic primes
+         * Output: Returns the palindromic primes from 1—100
+         */
+        function palindromicPrime() {
+            // Line Comment
+            let output = "2";
+            for (let number = 3, count = 1; count < 100; number += 2){
+                // number tracks number
+                // count tracks count
+                // goes until 100
+                // testing odd numbers 3, 5, 7, 9...
+                if (isPal(number) && isPrime(number)) {
+                    output += " " + number;
+                    if (++count % 10 == 0) {
+                        output += "<br>";
+                    }
+                }
+            }
+            document.getElementById("value").innerHTML = output;
+        }
+
+        function isPal(number) { // palindrome test
+            let s = number + "";
+            let len = s.length - 1;
+            for (let left = 0, right = len; left < right; left++, right--){
+                if (s.charAt(left) != s.charAt(right)) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        function isPrime(number) { // prime test
+
+            for (let i = 3; i <= Math.sqrt(number); i += 2) { // sqrt(1,000,000) = 1,000 --> much faster to test
+                if (number % i == 0) {
+                    return false;
+                }
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <h1>Find the first 100 palindromic primes</h1>
+    <button onclick = "palindromicPrime()" type = "button">Press for Prime</button>
+    <div id = "value"></div>
+    <!-- <script src="externalScript.js"></script> -->
+</body>
+</html>

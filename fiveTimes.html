@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Five Times Table</title>
+    <!-- <link rel="stylesheet" type="text/css" href="mystyle.css"> -->
+    <script>
+        // @ts-nocheck
+        
+        /* Defining Table
+         * Input: push button
+         * Processing: .js runs 5x for (1—12)
+         * Output: table is output
+         */
+        function tableFunction() {
+            // Line Comment
+            let output = "";
+            let count = 0;
+            for (let count = 0; count <= 12; count += 1) {
+                output += "5 x " + count + " = " + (5 * count) + "<br>";
+                // document.write(output); // I can use this if I change "output +=" to "output ="
+            }
+            document.getElementById("outputDiv").innerHTML = output;
+        }
+    </script>
+</head>
+<body>
+    <h1>Five Times Table</h1>
+    <button onclick="tableFunction()" type="button">Press for table.</button>
+    <div id="outputDiv"></div>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Mile Conversion Table</title>
+    <!-- <link rel="stylesheet" type="text/css" href="mystyle.css"> -->
+    <link rel="stylesheet" type="text/css" href="w3.css">
+    <script>
+        /* Defining Table
+        * Input: Give miles
+        * Processing: Convert miles to kilometers
+        * Output: 
+        */
+        function createTable() {
+            // get the input
+            let max = parseInt(document.getElementById("max").value); // value puts the value the user entered in.
+            let output = "Miles &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Kilometers<br>";
+            // create the table
+            for (let i = 1; i <= max; i++) {
+                output += i + "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp" + (i * 1.609) + "<br>";
+            }
+            // Get a tab stop.
+            // display the results
+            document.getElementById("value").innerHTML = output;
+            // Remember step-wise refinement!
+            // NaN = Not a Number
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Create a table to convert miles to kilometers</h1>
+    <p>Please enter the maximum miles: </p><input type="text" id="max"><br>
+    <button onclick="createTable()" type="button">Create Table</button>
+    <div id="value">
+    </div>
+</body>
+
+</html>

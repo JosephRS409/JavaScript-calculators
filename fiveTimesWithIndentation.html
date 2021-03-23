@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Five Times Table w/ Indentation</title>
+    <link rel="stylesheet" type="text/css" href="mystyle.css">
+    <script>
+        // @ts-nocheck
+
+        /* Defining Table
+         * Input: push button
+         * Processing: .js runs 5x for (1—12)
+         * Output: table is output
+         */
+        function tableFunction() {
+            // Line Comment
+            // let count = 0;
+            let output = "";
+            let indentation = ""
+            // let Indentation
+            // let string = document.getElementById("input1").value;
+
+            // let gap = ( * count);
+            // var indent = new string(' ', indentLevel * IndentSize); Wait, this is C#.
+            for (let count = 0; count <= 10; count ++) {
+                
+                indentation += "&nbsp&nbsp"
+                output += indentation + "5 x " + count + " = " + (5 * count) + "<br>";
+                
+                // document.writeln(output); // I can use this if I change "output +=" to "output ="
+            }
+            document.getElementById("outputDiv").innerHTML = output;
+        }
+    </script>
+</head>
+<body>
+    <h1>Five Times Table</h1>
+    <!-- <input type = "text" id = "input1"> -->
+    <button onclick="tableFunction()" type="button">Press for table.</button>
+    <div id="outputDiv"></div>
+    <p>Be amazed!</p>
+</body>
+
+</html>
+<!-- End of my code. 
+
+Bryce Francom's code below
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Five times table</title>
+    <script>
+        function times() {
+            let mult = 0;
+            let equa = '';
+            let result = 0;
+            for (incre = 1; incre < 13; incre += 1) { 
+                result = 5 * incre;
+                equa = '5 * ' + incre + ' = ' + result + '<br>';
+                document.write(equa);
+        }
+    }
+    </script>
+</head>
+<body>
+    <button type="button" onclick="times()">Discover the 5 Times table!</button>
+    <div id='output'></div>
+</body>
+</html> -->

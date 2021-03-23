@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <title>Logic Tool 20</title>
+    <script>
+        /* Input: reads start, end, and divisor values from text fields
+         * Processing: program calculates if start and end evenly divide by divisor
+         * Output: if evenly divided, that value is output to div
+         */
+
+        function myFunction() {
+            // Line Comment
+            let start = parseInt(document.getElementById("start").value); // value puts the value the user entered in.
+            let end = parseFloat(document.getElementById("end").value);
+            let divisor = parseFloat(document.getElementById("divisor").value);
+            // create the table
+            for (start; start <= end; start++) {
+                if (start % divisor == 0) {
+                    let numbers = document.write(start + " ")
+                }
+            }
+            document.getElementById("output").innerHTML = numbers;
+        }    
+    </script>
+</head>
+
+<body>
+    <h1>Please enter a start, end, and divisor value:</h1>
+
+    Start: <input type="text" id="start" size="5"><br>
+    End: <input type="text" id="end" size="5"><br>
+    Divisor: <input type="text" id="divisor" size="5"><br>
+    <button type="button" onclick="myFunction()">Click</button>
+    <div id="output"></div>
+</body>
+
+</html>

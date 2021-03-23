@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Footwear Machine</title>
+    <link rel="stylesheet" type="text/css" href="mystyle.css">
+    <script>
+        /* Defining Table
+         * Input: The current weather
+         * Processing: Picks the best shoe
+         * Output: Know what shoes to wear
+         */
+        function shoeChooser() {
+            // Line Comment
+            let weather = (document.getElementById("nameInputBox").value); // value puts the value the user entered in.
+            let message = "Your feet are naked. Do something. Put on SHOES!";
+            if (weather == "hot") {
+                message = "Wear sandals today.";
+            }
+            else if (weather == "rain") {
+                message = "Wear galoshes today.";
+            }
+            else if (weather == "snow") {
+                message = "Wear boots today.";
+            }
+            else {
+                message = "Just put some shoes on today.";
+            }
+            document.getElementById('output').innerHTML = message;
+            // document.getElementById("outputDiv").innerHTML = variableName;
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Footwear Machine</h1>
+    What is the weather: hot, rain, or snow? <input type="text" id="nameInputBox">
+    <button  onclick="shoeChooser()" type="button">
+        Shoe of Choice
+    </button>
+    <div id="output">
+    </div>
+</body>
+
+</html>
