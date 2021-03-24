@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Future Value Calculator</title>
+    <!-- <link rel="stylesheet" type="text/css" href="mystyle.css"> -->
+    <script>
+        // @ts-nocheck
+
+        /* Defining Table
+         * Input: gets input from the user
+         * Processing: calculates debt of inputs
+         * Output: returns the amount of debt accrued
+         */
+        function investment() {
+            // Get the user input.
+            var amount = parseFloat(document.getElementById("amount").value);
+            var annualRate = parseFloat(document.getElementById("rate").value);
+            // we could add a third input for years amount instead of 30.
+            // for instance:
+            var years = parseFloat(document.getElementById("years").value);
+
+            var monthlyRate = annualRate / 1200;
+            var output = "Years Future Value<br>";
+
+            for (let i = 1; i <= years; i++) {
+                output += i + "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp" + futureInvestmentValue(amount, monthlyRate, i) + "<br>";
+            } // &nbsp creates a space.
+
+            // Display the results to the user.
+            document.getElementById("value").innerHTML = output;
+        }
+
+        function futureInvestmentValue(amount, monthlyRate, years) {
+            // Calculate the future value.
+            var value = amount * Math.pow(1 + monthlyRate, years * 12);
+            return value.toFixed(2);
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Future Value Calculator</h1>
+    <p>Principal amount: </p><input type="text" id="amount">
+    <p>Annual rate: </p><input type="text" id="rate">
+    <p>Number of years: </p><input type="text" id="years">
+
+    <button onclick="investment()" type="button">Get Future Value</button>
+    <div id="value"></div>
+
+</body>
+
+</html>

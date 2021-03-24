@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Calculator</title>
+    <!-- <link rel="stylesheet" type="text/css" href="mystyle.css"> -->
+    <script>
+        // @ts-nocheck
+
+        /* Defining Table
+         * Input: gets input from the user
+         * Processing: calculates debt of inputs
+         * Output: returns the amount of debt accrued
+         */
+       
+        function doPayment() {
+            let principal = parseFloat(document.getElementById("principalInput").value); 
+            // value accesses what the user inputs in the input box.
+            let annualRate = parseFloat(document.getElementById("annualRateInput").value);
+            let years = parseFloat(document.getElementById("numYearsInput").value);
+            let periodsPerYear = parseFloat(document.getElementById("periodsPerYearInput").value);
+            var payMonthAmount = computePayment(principal, annualRate, years, periodsPerYear); 
+            //display outputs
+            document.getElementById("thingOne").innerHTML = Math.round(payMonthAmount, 2); 
+        }
+
+        function doBalance() {
+            let principal = parseFloat(document.getElementById("principalInput")
+            .value); // value accesses what the user inputs in the input box.
+            let annualRate = parseFloat(document.getElementById("annualRateInput").value);
+            let years = parseFloat(document.getElementById("numYearsInput").value);
+            let periodsPerYear = parseFloat(document.getElementById("periodsPerYearInput").value);
+            var numberOfPaymentPaidToDate = parseFloat(document.getElementById("numberOfPaymentsInput").value);
+            var balanceAmount = computeBalance(principal, annualRate, years, periodsPerYear, numberOfPaymentPaidToDate);
+            document.getElementById("thingTwo").innerHTML = balanceAmount;
+        }
+        
+        function computePayment(principal, annualRate, years, periodsPerYear) {
+            /*
+            p =       (ar)/
+                (1 − (1 + r)^−n)
+            p = payment/period
+            a = loan amount
+            r = interest rate/period
+            n = total number of periods ((period/year)*total years)
+            */
+           let rate = annualRate / periodsPerYear;//
+           let payment = (principal * rate) / (1 - Math.pow((1 + rate), -(years * periodsPerYear)));//equation
+           return payment; // GO TO LINE 43
+        }
+        
+        function computeBalance(principal, annualRate, years, periodsPerYear, numberOfPaymentPaidToDate) {
+            /*
+            b = (a * (1 + r)^d)   −   (p * ( ((1 + r)^d) − 1 )) /
+            (r)
+            b = balance
+            a = loan amount  a.k.a. principal
+            r = interest rate/period  a.k.a. rate
+            p = payment/period  a.k.a. payMonthAmount
+            d = payments paid to date
+
+            adding interest = (1 + r)^d
+            */
+            var payMonthAmount = computePayment(principal, annualRate, years, periodsPerYear);
+            // This function integrates, but costs modularity (can't stand by itself).
+            // Otherwise I would need to use parameters.
+            let rate = annualRate / periodsPerYear;//
+            let addingInterest = (1 + rate) ** numberOfPaymentPaidToDate;
+            let balance = (principal * addingInterest) - (payMonthAmount * (addingInterest - 1)) / rate;
+            return balance.toFixed(2);
+        }
+        // Line Comment
+
+
+        // function computeFutureValue(principal, annualRate, years, periodsPerYear){
+        //     // Line Comment
+        //     const f = principal * (1 + annualRate/periodsPerYear)**(years*periodsPerYear);
+        //     return f.toFixed(2);
+        // 
+    </script>
+</head>
+
+<body>
+    <h1>Loan Interest Calculator</h1>
+    <p>Principal amount: </p><input type="text" id="principalInput">
+    <p>Annual rate: </p><input type="text" id="annualRateInput">
+    <p>Please enter the number of years: </p><input type="text" id="numYearsInput">
+    <p>Periods per year: </p><input type="text" id="periodsPerYearInput">
+    
+    <button onclick="doPayment()" type="button">Monthly Payment Due</button>
+    <div id="thingOne"></div>
+
+    <p>Total Number Payments: </p><input type="text" id="numberOfPaymentsInput">
+    <button onclick="doBalance()" type="button">Remaining Balance</button>
+    <div id="thingTwo"></div>
+    <!-- <script src="externalScript.js"></script> -->
+</body>
+
+</html>
+
+<!-- In a file named loan.html, write an HTML document that looks similar to figure 9-7 in the textbook. Write four functions with these headers:
+function doPayment ( )
+function doBalance ( )
+function computePayment (principal, annualRate, years, periodsPerYear)
+function computeBalance (principal, annualRate, years, periodsPerYear, numberOfPaymentPaidToDate)
+The first two functions (doPayment and doBalance) do the following:
+
+Take no parameters.
+Are called from an onclick attribute.
+Get input from the user.
+Call the computePayment or the computeBalance function.
+Display a result to the user.
+The computePayment function computes and returns the monthly payment for a loan with a fixed annual interest rate. The formula for computing a loan payment is
+
+p =       (ar)/
+        (1 − (1 + r)^−n)
+Where p is the payment per period, a is the loan amount, r is the interest rate per period, and n is the total number of periods throughout the life of the loan.
+
+The computeBalance function computes and returns the balance for a loan with a fixed annual interest rate. The formula for computing the balance of a loan after d payments have been made is
+
+b = (a * (1 + r)^d)   −   (p * ( ((1 + r)^d) − 1 )) /
+                                    (r)
+Where b is the balance or payoff amount, a is the loan amount, r is the interest rate per period, p is the payment per period, and d is the number of payments paid to date. -->

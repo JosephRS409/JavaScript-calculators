@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investment Calculator</title>
+    <!-- <link rel="stylesheet" type="text/css" href="mystyle.css"> -->
+    <script>
+        // @ts-nocheck
+
+        /* Defining Table
+         * Input: gets input from the user
+         * Processing: calculates future value from inputs
+         * Output: returns the future value of the investment after x amount of time
+         */
+        function doFV () {
+            //grab inputs
+            let principal = parseFloat(document.getElementById("principalInput").value); // value accesses what the user inputs in the input box.
+            let annualRate = parseFloat(document.getElementById("annualRateInput").value); // value accesses what the user inputs in the input box.
+            let years = parseFloat(document.getElementById("yearsInput").value); // value accesses what the user inputs in the input box.
+            let periodsPerYear = parseFloat(document.getElementById("periodsPerYearInput").value); // value accesses what the user inputs in the input box.
+            var futureValue = computeFutureValue(principal, annualRate, years, periodsPerYear);
+            //display outputs
+            document.getElementById("outputDiv").innerHTML = futureValue;
+        }
+        function computeFutureValue(principal, annualRate, years, periodsPerYear){
+            // Line Comment
+            const f = principal * (1 + annualRate/periodsPerYear)**(years*periodsPerYear);
+            return f.toFixed(2);
+        }
+    </script>
+</head>
+<body>
+    <h1>Future Value Calculator</h1>
+    <p>Please enter your principal amount: </p><input type = "text" id = "principalInput">
+    <p>Please enter the annual rate: </p><input type = "text" id = "annualRateInput">
+    <p>Please enter the number of years: </p><input type = "text" id = "yearsInput">
+    <p>Please enter the periods per year: </p><input type = "text" id = "periodsPerYearInput">
+    <button onclick = "doFV()" type = "button">Get Future Value</button>
+    <div id = "outputDiv"></div>
+    <!-- <script src="externalScript.js"></script> -->
+</body>
+</html>
+
+<!-- In a file named invest.html, write an HTML document that looks similar to figure 9-6 in the textbook. Write two functions with these headers:
+    function doFV ()
+    function computeFutureValue(principal, annualRate, years, periodsPerYear)
+    The first function (doFV) does the following:
+    
+    Takes no parameters.
+    Is called from the onclick attribute.
+    Gets input from the user.
+    Calls the computeFutureValue function.
+    Displays the result to the user.
+    The second function (computeFutureValue) computes and returns the future value of an investment. The formula for computing the future value of an investment is
+    
+    f = a (1 + r)^n
+    
+    Where f is the future value, a is the investment amount sometimes called the principal, r is the growth rate per period, and n is the total number of periods throughout the life of the investment. -->
