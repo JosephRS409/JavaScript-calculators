@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create an Array of 100 Numbers</title>
+    <link rel="stylesheet" type="text/css" href="mystyle.css">
+    <script>
+        // @ts-nocheck
+
+        /* Defining Table
+         * Input: Program creates 100 random numbers
+         * Processing: Program sorts the 100 numbers
+         * Output: Program returns the sorted numbers
+         */
+        function creatArray() {
+            // Line Comment
+
+            let data = new Array(100);
+            for (let i = 0; i < data.length; i++) {
+                data[i] = Math.round(Math.random() * 100);
+            }
+            var output = "";
+            sortArray(data);
+            for (let i = 0; i < data.length; i++) {
+                output += data[i] + " ";
+                if (i % 10 == 9) {
+                    output += "<br>";
+                }
+            }
+            // Display the results to the user.
+            document.getElementById("outputDiv").innerHTML = output;
+        }
+
+        function sortArray(data) {
+            for (let i = 0; i < data.length; i++) { 
+                // Two iterators: one for the pass 
+                // and one for the compare
+                for (let j = 0; j < data.length - 1 - i; j++) { 
+                    // This makes it faster 
+                    // "-i" drops the largest number at the end of iteration 
+                    // "-1" is supposed to always be in the code. 
+                    // Normally this would break the code because of 
+                    //incorrect iteration at the end of the list. i.e. avoid "Bob <   " (That was nothing)
+                // for (let j = 0; j < data.length; j++) {
+                    if (data[j] > data[j + 1]) { // swap if first is larger than second.
+                        // [j] is the index, a.k.a. location
+                        // data holds the value, a.k.a. random number
+                        let t = data[j];
+                        data[j] = data[j + 1];
+                        data[j + 1] = t;
+                        /*
+                        for (let passThrough = 0; passThrough < data.length; passThrough++) {
+                            for (let pairCompare = 0; pairCompare < data.length - 1 - passThrough; pairCompare++) { 
+                                // 0—99 not 1—100
+                            // for (let pairCompare = 0; pairCompare < data.length - 1; pairCompare++) {
+                                if (data[pairCompare] > data[pairCompare + 1]) {
+                                    let sort = data[pairCompare];
+                                    data[pairCompare] = data[pairCompare + 1];
+                                    data[pairCompare + 1] = sort;
+                        */
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Create an Array of 100 Numbers</h1>
+    <!-- <input type = "text" id = "nameInputBox"> -->
+    <button onclick = "creatArray()" type = "button">Sort Random Button</button>
+    <div id = "outputDiv"></div>
+    <!-- <script src="externalScript.js"></script> -->
+</body>
+</html>
